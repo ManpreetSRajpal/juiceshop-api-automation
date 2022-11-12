@@ -18,7 +18,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core
     testImplementation 'org.hamcrest:hamcrest-core:2.2'
-
+    testImplementation 'io.rest-assured:rest-assured:5.2.0'
 }
 
 
