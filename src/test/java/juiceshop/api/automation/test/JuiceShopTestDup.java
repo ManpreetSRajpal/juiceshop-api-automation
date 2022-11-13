@@ -18,7 +18,7 @@ class JuiceShopTestDup extends BaseTest {
     @Test
     void testListProducts() {
         when().
-                get("/products/search").
+                get("/rest/products/search").
                 then().
                 statusCode(HttpStatus.SC_OK).
                 body("status", is("success")).
@@ -31,7 +31,7 @@ class JuiceShopTestDup extends BaseTest {
         given().
                 body(user).
         when().
-                post("/user/login").
+                post("/rest/user/login").
         then().
                 statusCode(HttpStatus.SC_OK)
                 .body("authentication", notNullValue());

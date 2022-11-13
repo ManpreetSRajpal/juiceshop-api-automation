@@ -20,7 +20,6 @@ public class BaseTest {
         RestAssured.requestSpecification=new RequestSpecBuilder()
                 .setContentType(ContentType.JSON)
                 .setBaseUri("http://localhost:3000")
-                .setBasePath("/rest")
                 .build();
     }
 }

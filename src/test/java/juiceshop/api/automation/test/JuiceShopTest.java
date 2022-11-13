@@ -11,8 +11,8 @@ import static org.hamcrest.Matchers.notNullValue;
 
 class JuiceShopTest extends BaseTest {
 
-    private final String LIST_PRODUCTS_ENDPOINT = "/products/search";
-    private final String LOGIN_USERS_ENDPOINT = "/user/login";
+    private final String LIST_PRODUCTS_ENDPOINT = "/rest/products/search";
+    private final String LOGIN_USERS_ENDPOINT = "/rest/user/login";
 
     @Test
     void testListProducts() {
