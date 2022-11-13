@@ -11,16 +11,20 @@ import static org.hamcrest.Matchers.notNullValue;
 
 class JuiceShopTest extends BaseTest {
 
-    private final String LIST_PRODUCTS_ENDPOINT ="/products/search";
-    private final String LOGIN_USERS_ENDPOINT ="/user/login";
+    private final String LIST_PRODUCTS_ENDPOINT = "/products/search";
+    private final String LOGIN_USERS_ENDPOINT = "/user/login";
+
     @Test
     void testListProducts() {
         when().
                 get(LIST_PRODUCTS_ENDPOINT).
-        then().
+                then().
                 statusCode(HttpStatus.SC_OK).
                 body("status", is("success")).
-                body("data", notNullValue());
+                body("data", notNullValue()).
+                body("data.size()", is(35))
+                .body("data.findAll{it.name.startsWith('OWASP')}.size", is(18))
+                .body("data.findAll{it.price<1}.size", is(4));
     }
 
     @Test
@@ -28,9 +32,9 @@ class JuiceShopTest extends BaseTest {
         User user = new User("test18@test.com", "password");
         given().
                 body(user).
-        when().
+                when().
                 post(LOGIN_USERS_ENDPOINT).
-        then().
+                then().
                 statusCode(HttpStatus.SC_OK)
                 .body("authentication", notNullValue());
     }
