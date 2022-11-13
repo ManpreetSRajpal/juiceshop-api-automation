@@ -2,6 +2,8 @@ package juiceshop.api.automation.test;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import juiceshop.api.automation.domain.Authentication;
+import juiceshop.api.automation.domain.LoginResponse;
 import juiceshop.api.automation.domain.User;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
@@ -58,22 +60,17 @@ public class BasketTest extends BaseTest {
         Map map = new HashMap();
         User user = new User("test35@test.com", "password");
 
-        Response response = given()
+        Authentication authentication = given()
                 .body(user)
                 .when()
                 .post(USER_LOGIN_ENDPOINT)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
-                .extract()
-                .response();
+                        .extract().body().jsonPath().getObject("authentication",Authentication.class);
 
-        JsonPath jsonPath = response.jsonPath();
 
-        String token = jsonPath.get("authentication.token");
-        int bid = jsonPath.get("authentication.bid");
-
-        map.put("token", token);
-        map.put("bid", bid);
+        map.put("token", authentication.getToken());
+        map.put("bid", authentication.getBid());
 
         return map;
     }
