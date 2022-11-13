@@ -6,8 +6,6 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
 
-import static io.restassured.RestAssured.basePath;
-import static io.restassured.RestAssured.baseURI;
 
 public class BaseTest {
 

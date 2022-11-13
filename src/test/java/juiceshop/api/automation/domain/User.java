@@ -1,31 +1,17 @@
 package juiceshop.api.automation.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
 public class User {
+    @NonNull
     private String email;
+    @NonNull
     private String password;
     private String passwordRepeat;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPasswordRepeat() {
-        return passwordRepeat;
-    }
-
-    public void setPasswordRepeat(String passwordRepeat) {
-        this.passwordRepeat = passwordRepeat;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User(){}
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
 }
