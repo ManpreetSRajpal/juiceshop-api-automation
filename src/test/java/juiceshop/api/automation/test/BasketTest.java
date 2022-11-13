@@ -1,9 +1,6 @@
 package juiceshop.api.automation.test;
 
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import juiceshop.api.automation.domain.Authentication;
-import juiceshop.api.automation.domain.LoginResponse;
 import juiceshop.api.automation.domain.User;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
@@ -66,8 +63,7 @@ public class BasketTest extends BaseTest {
                 .post(USER_LOGIN_ENDPOINT)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
-                        .extract().body().jsonPath().getObject("authentication",Authentication.class);
-
+                .extract().body().jsonPath().getObject("authentication", Authentication.class);
 
         map.put("token", authentication.getToken());
         map.put("bid", authentication.getBid());
