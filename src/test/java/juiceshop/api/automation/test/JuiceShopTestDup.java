@@ -1,23 +1,25 @@
 
 package juiceshop.api.automation.test;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import juiceshop.api.automation.domain.User;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 
-class JuiceShopTest extends BaseTest {
+class JuiceShopTestDup extends BaseTest {
 
-    private final String LIST_PRODUCTS_ENDPOINT ="/products/search";
-    private final String LOGIN_USERS_ENDPOINT ="/user/login";
+
     @Test
     void testListProducts() {
         when().
-                get(LIST_PRODUCTS_ENDPOINT).
-        then().
+                get("/products/search").
+                then().
                 statusCode(HttpStatus.SC_OK).
                 body("status", is("success")).
                 body("data", notNullValue());
@@ -29,7 +31,7 @@ class JuiceShopTest extends BaseTest {
         given().
                 body(user).
         when().
-                post(LOGIN_USERS_ENDPOINT).
+                post("/user/login").
         then().
                 statusCode(HttpStatus.SC_OK)
                 .body("authentication", notNullValue());
