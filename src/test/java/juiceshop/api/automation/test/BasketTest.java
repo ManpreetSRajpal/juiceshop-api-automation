@@ -55,10 +55,7 @@ public class BasketTest extends BaseTest {
 
     private Map getTokenAndBId() {
         Map map = new HashMap();
-        //User user = new User("test35@test.com", "password");
-        Map user=new HashMap();
-        user.put("email","test35@test.com");
-        user.put("password","password");
+        User user = new User("test35@test.com", "password");
 
         Authentication authentication = given()
                 .body(user)
